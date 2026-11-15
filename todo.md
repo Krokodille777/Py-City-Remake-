@@ -9,7 +9,7 @@
    - inventory: check your current inventory;
    - save: save your current game progress;
    - load: load a previously saved game.
-### Status: In Progress
+### Status: Done
 
 3. Shopping:
     - first items and prices for then;

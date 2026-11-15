@@ -1,4 +1,7 @@
 {
-    "money": 100,
-    "inventory": {}
+    "money": 50,
+    "inventory": {
+        "apple": 1,
+        "kiwi": 2
+    }
 }
