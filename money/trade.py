@@ -3,6 +3,9 @@ from main.player import player
 from money.balance import show_balance
 
 def buy_item(item_name, quantity):
+    if quantity <= 0:
+        print("Invalid quantity. Please enter a positive integer.")
+        return
     price = available.get(item_name)
     if price is None:
         print(f"Item '{item_name}' is not available in the shop.")
@@ -21,6 +24,9 @@ def buy_item(item_name, quantity):
 
 def sell_item(item_name, quantity):
     price = available.get(item_name)
+    if quantity <= 0:
+        print("Invalid quantity. Please enter a positive integer.")
+        return
     if price is None:
         print(f"Item '{item_name}' is not available in the shop.")
         return
