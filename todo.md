@@ -2,12 +2,14 @@
 
 ## Tasks
 1. Preparation,  start, exit command
+### Status: Done
 
 2. Money, Inventory, Commands: 
    - balance: check your current balance;
    - inventory: check your current inventory;
    - save: save your current game progress;
    - load: load a previously saved game.
+### Status: In Progress
 
 3. Shopping:
     - first items and prices for then;

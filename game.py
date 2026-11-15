@@ -2,12 +2,13 @@
 import enum
 from money.balance import show_balance
 from items.inventory import add_item, remove_item, check_inventory
+from main.save_and_load import save_game, load_game
 class GameState(enum.Enum):
     START = 1
     PLAYING = 2
     PAUSED = 3
     GAME_OVER = 4
-command_list = ("balance","help", "play", "exit", "pause", "resume", "inventory", "add_item", "remove_item") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
+command_list = ("balance","help", "play", "save", "load", "exit", "pause", "resume", "inventory", "add_item", "remove_item") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
 
 def print_help():
     print("Available commands:")
@@ -50,16 +51,19 @@ def main():
                 item_name = input("Enter the name of the item to add: ")
                 quantity = int(input("Enter the quantity to add: "))
 
-                if quantity.is_integer() and quantity > 0:
+                if quantity > 0:
                     add_item(item_name, quantity)
                 else:
                     print("Invalid quantity. Please enter a positive integer.")
 
-                
+            elif command == "save":
+                save_game()
+            elif command == "load":
+                load_game()
             elif command == "remove_item":
                 item_name = input("Enter the name of the item to remove: ")
                 quantity = int(input("Enter the quantity to remove: "))
-                if quantity.is_integer() and quantity > 0:
+                if quantity > 0:
                     remove_item(item_name, quantity)
                 else:
                     print("Invalid quantity. Please enter a positive integer.")

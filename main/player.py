@@ -14,6 +14,14 @@ class Player:
     def set_money(self, amount):
         self.money = amount
 
+    def to_dict(self):
+        return {"money" : self.money, "inventory" : self.inventory}
 
-Player1 = Player(100, {})
+    def load_from_dict(self,data):
+        self.money = data["money"]
+        self.inventory = data["inventory"]
+
+
+
+player = Player(100, {})
 
