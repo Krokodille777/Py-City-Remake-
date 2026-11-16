@@ -5,12 +5,16 @@ from items.inventory import check_inventory
 from items.catalog import show_shoplist
 from main.save_and_load import save_game, load_game
 from money.trade import buy_item, sell_item
+from main.player import player
+from money.work import work, sleep
 class GameState(enum.Enum):
     START = 1
     PLAYING = 2
     PAUSED = 3
     GAME_OVER = 4
-command_list = ("balance","help", "play", "save", "load", "exit", "pause", "resume", "inventory", "buy", "sell", "shoplist") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
+
+
+command_list = ("balance","help", "play", "save", "load", "exit", "pause", "resume", "inventory", "buy", "sell", "shoplist", "health", "energy", "happiness", "work", "sleep") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
 
 def print_help():
     print("Available commands:")
@@ -63,6 +67,16 @@ def main():
                 sell_item(item_name, quantity)
             elif command == "shoplist":
                 show_shoplist()
+            elif command == "health":
+                print(f"Your current health is: {player.get_health()}")
+            elif command == "energy":
+                print(f"Your current energy is: {player.get_energy()}")
+            elif command == "happiness":
+                print(f"Your current happiness is: {player.get_happiness()}")
+            elif command == "work":
+                work()
+            elif command == "sleep":
+                sleep()
             else:
                 print(f"Unknown command: {command}. Type 'help' for a list of commands.")
 

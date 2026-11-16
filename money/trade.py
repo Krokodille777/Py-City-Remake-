@@ -31,7 +31,7 @@ def sell_item(item_name, quantity):
         print(f"Item '{item_name}' is not available in the shop.")
         return
     if item_name in player.inventory and player.inventory[item_name] >= quantity:
-        total_earnings = price * quantity
+        total_earnings = price * quantity /2
         player.set_money(player.get_money() + total_earnings)
         player.inventory[item_name] -= quantity
         if player.inventory[item_name] == 0:

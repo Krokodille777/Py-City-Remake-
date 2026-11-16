@@ -17,6 +17,7 @@
     - shoplist: view the list of available items in the shop (with their prices);
     - buy: purchase an item from the shop (if it's affordable);
     - sell: sell an item from your inventory back to the shop and earn money (if you have it);
+### Status: Done
 
 4. Work:
     - work system;
@@ -90,3 +91,21 @@
     - quest: view available quests and their requirements;
     - completequest: complete a quest to earn rewards (if you meet the requirements);
     - achievements: view your achievements and progress;
+
+12. Pets & Relationships:
+    - pet and relationship system;
+    - new sellable item types: pet items and relationship gifts;
+    Commands:
+    - adoptpet: adopt a pet to keep as a companion (if you have the required items);
+    - feedpet: feed your pet to keep it healthy and happy (if you have the required food);
+    - gift: give a gift to a friend or loved one to improve your relationship (if you have the required item);
+
+13. Work Update - Jobs:
+    - new jobs and work system update;
+    - luck system update;
+    - boost items: suitcase, fan, and briefcase. These items can boost your salary and happiness when working.
+    Commands:
+    - joblist: view available jobs and their requirements;
+    - jobapply: apply for a job to earn money (if you meet the requirements);
+    - work: perform a job to earn money (with a cooldown period and different outcomes based on luck);
+    - jobquit: quit your current job (if you have one);
