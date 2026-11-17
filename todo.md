@@ -76,6 +76,7 @@
     - new sellable item types: medicine and training items;
     - catalog update: new catalog **pages** instead of one long catalog;
     - help system update: new help **pages** instead of one long help, descriptions for each command;
+    - eat upgrade: obesity: eating too much when you're already full can lead to obesity, which can have negative effects on your health, energy, and happiness; if you are obese, you can attend a gym to lose weight and improve your health, energy, and happiness;
     Commands:
     - heal: use medicine to restore health (if you have it);
     - train: use training items to improve your skills (if you have them);

@@ -7,6 +7,7 @@ available = {
     "bread" : {"price" : 3, "type": "food", "health": 8, "energy": 15, "shelf_life": 600, "hunger": -7},
     "wine" : {"price" : 10, "type": "drink", "health": -5, "energy": 5, "shelf_life": 3600, "hunger": 0},
     "water" : {"price" : 1, "type": "drink", "health": 0, "energy": 5, "shelf_life": 3600, "hunger": 0},
+    "cheese" : {"price" : 15, "type": "food", "health": 10, "energy": 15, "shelf_life": 500, "hunger": -5},
     "hotdog" : {"price" : 25, "type": "food", "health": 10, "energy": 20, "shelf_life": 600, "hunger": -9},
     "burger" : {"price" : 30, "type": "food", "health": 15, "energy": 25, "shelf_life": 600, "hunger": -12},
     "tomato" : {"price" : 2, "type": "food", "health": 5, "energy": 10, "shelf_life": 300, "hunger": -2},
