@@ -15,19 +15,24 @@ def salary():
     elif "house" in inventory:
         earned *= 2
     elif "car" in inventory:
-        earned *= 2
+        earned *= 1.5
     player.set_money(player.get_money() + earned)
 
 #if player gets a high salary, their happines will increase. Otherwise, it will decrease. The threshold for a high salary is set at $300.
     if earned >= 300:
-        player.set_happiness(player.get_happiness() + 10)
+        player.set_happiness(min(100, player.get_happiness() + 10))
         print ("You earned a high salary, so your happiness has increased by 10 points.")
     else:
-        player.set_happiness(player.get_happiness() - 5)
+        player.set_happiness(max(0, player.get_happiness() - 5))
         print ("You didn't earn a high salary, so your happiness has decreased by 5 points.")
     return earned
 
 
+def work_timeout_when_energy_20_or_less():
+    if player.get_energy() <= 20:
+        print("Your energy is too low to work. You need to rest before working again.")
+        return True
+    return False
 
 def exhaustion():
     r2 = random.choice([10, 20, 30, 40, 50])  # Random exhaustion between 10 and 50
@@ -47,6 +52,7 @@ def exhaustion():
         player.set_health(max(0, player.get_health() - 10))
         player.set_happiness (max(0, player.get_happiness() - 10))
         print ("Warning! Energy Level Critical! Get rest immediately!")
+        return True
     player.set_energy(max(0, player.get_energy() - r2))
     print (f"You are feeling tired. Your energy has decreased by {r2}.")
 
@@ -64,6 +70,9 @@ def work():
     print("You are going to work...")
     time.sleep(2)  # simulate the shift
     exhaustion()
+    player.set_hunger(min(100, player.get_hunger() + 20))  # Increase hunger by 20 after working
+    if work_timeout_when_energy_20_or_less():
+        return
     earned = salary()
     print(f"Your shift is over. You earned ${earned}.")
     show_balance()
@@ -84,4 +93,3 @@ def sleep():
         player.set_energy(min(100, player.get_energy() + 10))
         print(f"You slept for a while. Your energy has increased by 10. Current energy: {player.get_energy()}")
     player.set_energy(min(100, player.get_energy() + 50))
-    print ("You have slept well. Your energy has increased by 50.")

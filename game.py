@@ -3,6 +3,7 @@ import enum
 from money.balance import show_balance
 from items.inventory import check_inventory
 from items.catalog import show_shoplist
+from items.use.eat import eat_item, update_expired
 from main.save_and_load import save_game, load_game
 from money.trade import buy_item, sell_item
 from main.player import player
@@ -14,7 +15,9 @@ class GameState(enum.Enum):
     GAME_OVER = 4
 
 
-command_list = ("balance","help", "play", "save", "load", "exit", "pause", "resume", "inventory", "buy", "sell", "shoplist", "health", "energy", "happiness", "work", "sleep") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
+command_list = ("balance","help", "play", "save", "load", "exit", "pause", "resume", 
+                "inventory", "buy", "sell", "shoplist", "health", "energy", "happiness", 
+                "work", "sleep", "eat", "hunger") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
 
 def print_help():
     print("Available commands:")
@@ -38,6 +41,7 @@ def main():
         elif game_state == GameState.PLAYING:
             print("Game is now playing...")
             command = input("Enter a command (type 'help' for a list of commands): ")
+            update_expired()  # Update expired items before processing commands
             if command == "pause":
                 game_state = GameState.PAUSED
                 print("Game paused. Type 'resume' to continue.")
@@ -77,6 +81,11 @@ def main():
                 work()
             elif command == "sleep":
                 sleep()
+            elif command == "eat":
+                item_name = input("Enter the item name to eat: ")
+                eat_item(item_name)
+            elif command == "hunger":
+                print(f"Your current hunger level is: {player.get_hunger()}")
             else:
                 print(f"Unknown command: {command}. Type 'help' for a list of commands.")
 
