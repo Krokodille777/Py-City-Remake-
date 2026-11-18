@@ -1,12 +1,15 @@
 # Main file of the game. Physics and game logic will be imported here. This fille will handle, starting the game, game process, command list and end of the game.
 import enum
-from money.balance import show_balance
 from items.inventory import check_inventory
 from items.catalog import show_shoplist
 from items.use.eat import eat_item, update_expired
+from items.use.giftbox import open_gift_box
+from items.use.luckybox import open_lucky_box
+from items.use.trash import trash_item
 from main.save_and_load import save_game, load_game
-from money.trade import buy_item, sell_item
 from main.player import player
+from money.balance import show_balance
+from money.trade import buy_item, sell_item
 from money.work import work, sleep
 class GameState(enum.Enum):
     START = 1
@@ -17,7 +20,7 @@ class GameState(enum.Enum):
 
 command_list = ("balance","help", "play", "save", "load", "exit", "pause", "resume", 
                 "inventory", "buy", "sell", "shoplist", "health", "energy", "happiness", 
-                "work", "sleep", "eat", "hunger") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
+                "work", "sleep", "eat", "hunger", "open", "trash", "luck") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
 
 def print_help():
     print("Available commands:")
@@ -86,6 +89,20 @@ def main():
                 eat_item(item_name)
             elif command == "hunger":
                 print(f"Your current hunger level is: {player.get_hunger()}")
+            elif command == "trash":
+                item_name = input("Enter the item name to trash: ")
+                quantity = int(input("Enter the quantity to trash: "))
+                trash_item(item_name, quantity)
+            elif command == "open":
+                box_input = input("Enter the box type to open (gift_box or lucky_box): ")
+                if box_input == "gift_box":
+                    open_gift_box()
+                elif box_input == "lucky_box":
+                    open_lucky_box()
+                else:
+                    print("Invalid box type.")
+            elif command == "luck":
+                print(f"Your current luck is: {player.get_luck()}")
             else:
                 print(f"Unknown command: {command}. Type 'help' for a list of commands.")
 

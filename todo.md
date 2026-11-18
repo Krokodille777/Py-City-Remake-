@@ -49,10 +49,14 @@
     - new usable items: fishing rod, hunting rifle and mining pickaxe;
     - new sellable item types: fish, meat and ores;
     - luck system update;
+    - catalog update: books, more food items, TV, movies, and more; 
+    - new stats: intelligence and perception.
     Commands:
     - fish: catch fish from the water;
     - hunt: shoot an animal to get meat;
     - mine: dig up ores from the ground;
+    - read: read a book to increase your knowledge and happiness (if you have it);
+    - watch: watch a movie or TV show to increase your happiness (if you have it);
 
 7. Gambling:
     - gambling system;

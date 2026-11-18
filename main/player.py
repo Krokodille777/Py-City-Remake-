@@ -5,7 +5,7 @@ class WorkState(enum.Enum):
     DONE = 1
     READY = 2
 class Player:
-    def __init__ (self, money, inventory, health, energy, happiness, work_state, last_work_time, hunger):
+    def __init__ (self, money, inventory, health, energy, happiness, work_state, last_work_time, hunger, luck):
         self.money = money
         self.inventory = inventory
         self.health = health
@@ -15,6 +15,9 @@ class Player:
         self.bought_at = {}  # Dictionary to store the purchase time of each item
         self.default_work_state = work_state  # Default work state is READY
         self.hunger = hunger
+
+        #special stats
+        self.luck = luck
     def get_inventory(self):
         return self.inventory
 
@@ -50,6 +53,10 @@ class Player:
         return self.hunger
     def set_hunger(self, hunger):
         self.hunger = hunger
+    def get_luck(self):
+        return self.luck
+    def set_luck(self, luck):
+        self.luck = luck
 
     def load_from_dict(self,data):
         # .get() gives a default value, so older save files without these fields still load
@@ -62,13 +69,13 @@ class Player:
         self.last_work_time = data.get("last_work_time", 0)
         self.hunger = data.get("hunger", 0)
         self.bought_at = data.get("bought_at", {})
-
+        self.luck = data.get("luck", 0)
     def to_dict(self):
         return {"money" : self.money, "inventory" : self.inventory, "health" : self.health, 
                 "energy" : self.energy, "happiness" : self.happiness, "work_state" : self.default_work_state.name, 
-                "last_work_time" : self.last_work_time, "hunger" : self.hunger, "bought_at" : self.bought_at}
+                "last_work_time" : self.last_work_time, "hunger" : self.hunger, "bought_at" : self.bought_at, "luck" : self.luck}
 
 
 
-player = Player(100, {}, 100, 100, 50, WorkState.READY, 0, 0)
+player = Player(100, {}, 100, 100, 50, WorkState.READY, 0, 0, 0)
 
