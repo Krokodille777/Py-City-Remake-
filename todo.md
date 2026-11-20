@@ -50,7 +50,7 @@
     - new sellable item types: fish, meat and ores;
     - luck system update;
     - catalog update: books, more food items, TV, movies, and more; 
-    - new stats: intelligence and perception.
+    - new stats: intelligence and perception, endurance.
     Commands:
     - fish: catch fish from the water;
     - hunt: shoot an animal to get meat;

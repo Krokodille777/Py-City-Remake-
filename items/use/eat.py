@@ -40,7 +40,7 @@ def eat_item(item_name):
     if item is None:
         print(f"Unknown item '{item_name}'.")
         return
-    if item["type"] not in ["food", "drink"]:
+    if item["type"] not in ["food", "drink", "seafood"]:
         print (f"Item '{item_name}' is not edible. Please spare your teeth and try something else.")
         return
     if item_name not in player.inventory or player.inventory[item_name] <= 0:
