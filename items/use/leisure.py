@@ -10,18 +10,23 @@ def read_item(item_name):
     if item is None:
         print(f"Unknown item '{item_name}'.")
         return
-    
-    if item ["type"] in ["book"]:
-        if player.inventory.get(item_name, 0) <= 0:
-            print(f"You don't have any {item_name} to read.")
-            return
+    if item["type"] != "book":
+        print(f"You can't read {item_name}.")
+        return
+    if player.inventory.get(item_name, 0) <= 0:
+        print(f"You don't have any {item_name} to read.")
+        return
 
-        player.inventory[item_name] -= 1
-        if player.inventory[item_name] <= 0:
-            del player.inventory[item_name]
-        player.set_happiness(min(100, player.get_happiness() + available[item_name]["happiness"]))
-        player.set_intelligence(min(10, player.get_intelligence() + available[item_name]["intelligence"]))
-        print(f"You read {item_name}. Happiness: +{available[item_name]['happiness']}, Intelligence: +{available[item_name]['intelligence']}.")
+    player.inventory[item_name] -= 1
+    if player.inventory[item_name] <= 0:
+        del player.inventory[item_name]
+
+    gains = [f"Happiness: +{item.get('happiness', 0)}"]
+    player.set_happiness(min(100, player.get_happiness() + item.get("happiness", 0)))
+    if "intelligence" in item:
+        player.set_intelligence(min(10, player.get_intelligence() + item["intelligence"]))
+        gains.append(f"Intelligence: +{item['intelligence']}")
+    print(f"You read {item_name}. " + ", ".join(gains))
 
 
 def watch_item(item_name):
@@ -30,29 +35,29 @@ def watch_item(item_name):
     if item is None:
         print(f"Unknown item '{item_name}'.")
         return
+    if item["type"] != "watch":
+        print(f"You can't watch {item_name}.")
+        return
+    if player.inventory.get(item_name, 0) <= 0:
+        print(f"You don't have any {item_name} to watch.")
+        return
+    if player.inventory.get("TV", 0) <= 0 and player.inventory.get("smartphone", 0) <= 0:
+        print("You need a TV or smartphone to watch this item.")
+        return
 
-    if item ["type"] in ["watch"] :
-        if player.inventory.get(item_name, 0) <= 0:
-            print (f"You don't have any {item_name} to watch.")
-            return
+    player.inventory[item_name] -= 1
+    if player.inventory[item_name] <= 0:
+        del player.inventory[item_name]
 
-        if player.inventory.get("TV", 0) <= 0 and player.inventory.get("smartphone", 0) <= 0:
-            print("You need a TV or smartphone to watch this item.")
-            return
-        player.inventory[item_name] -= 1
-        if player.inventory[item_name] <= 0:
-            del player.inventory[item_name]
-
-        player.set_happiness(min(100, player.get_happiness() + available[item]["happiness"]))
-        player.set_perception(min(10, player.get_perception() + available[item]["perception"]))
-        if "intelligence" in available[item]:
-            player.set_intelligence(min(10, player.get_intelligence() + available[item]["intelligence"]))
-        if "intelligence" in available[item]:
-            print(f"Intelligence: +{available[item]['intelligence']}.")
-
-        print(f"You watched {item}. Happiness: +{available[item]['happiness']}, Perception: +{available[item]['perception']}.")
-        if "intelligence" in available[item]:
-            print(f"You watched {item}. Happiness: +{available[item]['happiness']}, Perception: +{available[item]['perception']}, Intelligence: +{available[item]['intelligence']}.")
+    gains = [f"Happiness: +{item.get('happiness', 0)}"]
+    player.set_happiness(min(100, player.get_happiness() + item.get("happiness", 0)))
+    if "perception" in item:
+        player.set_perception(min(10, player.get_perception() + item["perception"]))
+        gains.append(f"Perception: +{item['perception']}")
+    if "intelligence" in item:
+        player.set_intelligence(min(10, player.get_intelligence() + item["intelligence"]))
+        gains.append(f"Intelligence: +{item['intelligence']}")
+    print(f"You watched {item_name}. " + ", ".join(gains))
 
 
 def play_item(item_name):

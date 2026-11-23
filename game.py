@@ -9,9 +9,11 @@ from items.use.trash import trash_item
 from items.use.leisure import read_item, watch_item, play_item
 from main.save_and_load import save_game, load_game
 from main.player import player
+from main.check_time import check_time
 from money.balance import show_balance
 from money.trade import buy_item, sell_item
 from money.work import work, sleep
+from money.gamble import gamble
 from go.fishing import catch_fish, treasure_chest
 from go.hunting import hunt_animal
 from go.mining import mine_ore
@@ -25,7 +27,7 @@ class GameState(enum.Enum):
 command_list = ("balance","help", "play", "save", "load", "exit", "pause", "resume", 
                 "inventory", "buy", "sell", "shoplist", "health", "energy", "happiness", 
                 "work", "sleep", "eat", "hunger", "open", "trash", "luck", "status", 
-                "read", "watch", "game", "fish", "hunt", "mine") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
+                "read", "watch", "game", "fish", "hunt", "mine", "gamble", "time") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
 
 def print_help():
     print("Available commands:")
@@ -129,7 +131,10 @@ def main():
                 hunt_animal()
             elif command == "mine":
                 mine_ore()
-
+            elif command == "gamble":
+                gamble()
+            elif command == "time":
+                check_time()
             else:
                 print(f"Unknown command: {command}. Type 'help' for a list of commands.")
 

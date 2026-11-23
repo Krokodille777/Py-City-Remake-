@@ -30,15 +30,6 @@ def use_bullet():
         print("You need bullets to hunt. Please buy some from the shop.")
         return False
 
-def cooldown_hunting():
-    """Cooldown for hunting. The player can hunt once every 10 minutes."""
-    current_time = time.time()
-    if current_time - player.last_hunted_time < 600:  # 600 seconds = 10 minutes
-        remaining_time = 600 - (current_time - player.last_hunted_time)
-        print(f"You need to wait {int(remaining_time)} seconds before hunting again.")
-        return False
-    return True 
-
 def hunt_animal():
     if player.inventory.get("hunting rifle", 0) <= 0:
             print("You need a hunting rifle to hunt animals.")
@@ -62,6 +53,4 @@ def hunt_animal():
     else:
         print(f"You missed the {animal_name}. Better luck next time!")
         player.set_luck(max(0, player.get_luck() - 0.1))  # Decrease luck by 0.1 points for missing
-    player.set_last_hunted_time(time.time())  # Update the last hunted time after hunting
-    cooldown_hunting()  # Start the cooldown after hunting
 

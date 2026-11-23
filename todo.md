@@ -29,6 +29,7 @@
     - health: check your current health level;
     - energy: check your current energy level;
     - happiness: check your current happiness level;
+### Status: Done
 
 
 5. Usable Items & Eating:
@@ -43,6 +44,7 @@
     - eat: consume a food item to restore health or energy (if you have it);
     - sell (updated): sell an item from your inventory back to the shop and earn money. If it's stale, you'll earn less money for it;
     - trash: if you think an item is useless, you can get rid of it by trashing it. This will free up space in your inventory, but you won't get any money back for it;
+### Status: Done
 
 6. Fish, Hunt & Mine:
     - fishing, hunting and mining physics;
@@ -57,14 +59,14 @@
     - mine: dig up ores from the ground;
     - read: read a book to increase your knowledge and happiness (if you have it);
     - watch: watch a movie or TV show to increase your happiness (if you have it);
+### Status: Done
 
 7. Gambling:
     - gambling system;
     - luck system update;
     - different gambling games: coin flip, slot machine, rock-paper-scissors, battle and more;
     Commands:
-    - gamble: gamble your money for a chance to win more money (with a cooldown period);
-    - choosegame: choose a gambling game to play (if you have enough money);
+    - gamble: choose a gambling game to play. And play it. (with cooldown effect) (if you have enough money);
 
 
 8. Cook & Craft:
