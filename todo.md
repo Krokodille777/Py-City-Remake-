@@ -67,7 +67,7 @@
     - different gambling games: coin flip, slot machine, rock-paper-scissors, battle and more;
     Commands:
     - gamble: choose a gambling game to play. And play it. (with cooldown effect) (if you have enough money);
-
+### Status: Done
 
 8. Cook & Craft:
     - cooking and crafting system;

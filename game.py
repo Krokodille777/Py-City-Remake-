@@ -17,6 +17,7 @@ from money.gamble import gamble
 from go.fishing import catch_fish, treasure_chest
 from go.hunting import hunt_animal
 from go.mining import mine_ore
+from go.chopping import chop_wood
 class GameState(enum.Enum):
     START = 1
     PLAYING = 2
@@ -27,7 +28,7 @@ class GameState(enum.Enum):
 command_list = ("balance","help", "play", "save", "load", "exit", "pause", "resume", 
                 "inventory", "buy", "sell", "shoplist", "health", "energy", "happiness", 
                 "work", "sleep", "eat", "hunger", "open", "trash", "luck", "status", 
-                "read", "watch", "game", "fish", "hunt", "mine", "gamble", "time") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
+                "read", "watch", "game", "fish", "hunt", "mine", "gamble", "time", "chop") #add_item and remove_item are temporary commands. They're here to test the inventory system. They'll be replaced with buy, sell, trash and use commands in the future.
 
 def print_help():
     print("Available commands:")
@@ -131,6 +132,8 @@ def main():
                 hunt_animal()
             elif command == "mine":
                 mine_ore()
+            elif command == "chop":
+                chop_wood()
             elif command == "gamble":
                 gamble()
             elif command == "time":
